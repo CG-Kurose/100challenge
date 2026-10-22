@@ -1,0 +1,20 @@
+{
+  "id": "./",
+  "name": "けん玉ログ | 練習記録",
+  "short_name": "けん玉ログ",
+  "description": "けん玉の技ごとの成功回数と練習記録をつけるアプリ",
+  "lang": "ja",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f7f5ef",
+  "theme_color": "#f7f5ef",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

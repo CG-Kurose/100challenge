@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#f7f5ef">
+    <meta name="description" content="けん玉の技ごとの成功回数と練習記録をつけるアプリ">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" href="icon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="styles.css">
+    <title>けん玉ログ | 練習記録</title>
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="./" aria-label="けん玉ログ ホーム">
+          <span class="brand-mark" aria-hidden="true">け</span>
+          <span>けん玉<span class="brand-light">ログ</span></span>
+        </a>
+        <span class="local-badge"><span class="status-dot"></span>この端末に保存</span>
+      </header>
+
+      <main>
+        <section class="daily-heading" aria-labelledby="page-title">
+          <h1 id="page-title">今日の練習</h1>
+          <time id="today-date"></time>
+        </section>
+
+        <div id="app-message" class="app-message" role="alert" aria-live="assertive" hidden></div>
+
+        <section class="practice-section" aria-labelledby="practice-title">
+          <div class="section-heading">
+            <div>
+              <p class="section-kicker">MY CHALLENGES</p>
+              <h2 id="practice-title">練習中の技 <span id="trick-count" class="count-pill">0</span></h2>
+            </div>
+            <button id="add-trick-button" class="button button-dark add-button" type="button">
+              <span aria-hidden="true">＋</span> 技を追加
+            </button>
+          </div>
+          <div id="trick-list" class="trick-list"></div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <span>小さな成功を、積み重ねよう。</span>
+        <span class="footer-mark" aria-hidden="true">KENDAMA LOG</span>
+      </footer>
+    </div>
+
+    <dialog id="trick-dialog" class="dialog">
+      <form id="trick-form" class="dialog-content">
+        <div class="dialog-heading">
+          <div>
+            <p class="section-kicker">CHALLENGE SETUP</p>
+            <h2 id="trick-dialog-title">技を追加</h2>
+          </div>
+          <button class="icon-button" type="button" data-close="trick-dialog" aria-label="閉じる">×</button>
+        </div>
+        <input id="trick-id" type="hidden">
+        <label class="field-label" for="trick-name">技の名前</label>
+        <input id="trick-name" class="text-input" type="text" maxlength="80" placeholder="例：灯台3回転とんぼ返り" required>
+        <label class="field-label" for="trick-goal">目標回数</label>
+        <div class="goal-input-wrap">
+          <input id="trick-goal" class="text-input" type="number" min="1" max="1000000" step="1" value="100" required>
+          <span>回</span>
+        </div>
+        <p id="trick-form-error" class="form-error" role="alert"></p>
+        <div class="dialog-actions">
+          <button class="button button-quiet" type="button" data-close="trick-dialog">キャンセル</button>
+          <button class="button button-dark" type="submit">保存する</button>
+        </div>
+        <button id="delete-trick-button" class="delete-button" type="button" hidden>この技を削除</button>
+      </form>
+    </dialog>
+
+    <dialog id="detail-dialog" class="dialog detail-dialog">
+      <div class="dialog-content">
+        <div class="dialog-heading detail-heading">
+          <div>
+            <p class="section-kicker">PRACTICE & HISTORY</p>
+            <h2 id="detail-title"></h2>
+          </div>
+          <button class="icon-button" type="button" data-close="detail-dialog" aria-label="閉じる">×</button>
+        </div>
+        <div id="detail-content"></div>
+      </div>
+    </dialog>
+
+    <script src="app.js" defer></script>
+  </body>
+</html>
